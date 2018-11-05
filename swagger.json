@@ -344,7 +344,7 @@
     "MaterialLot" : {
       "type" : "object",
       "description" : "A representation of a uniquely identified specific amount of material, either countable or weighable shall be named as a material lot. A material lot describes the planned or actual total quantity or amount of material available, its current state, and its specific property values. A material lot may be tested by the execution of a material test specification.",
-      "required" : [ "idee", "hierarchyScopeId", "effectiveFrom", "effectiveTo" ],
+      "required" : [ "id", "hierarchyScopeId", "effectiveFrom", "effectiveTo" ],
       "properties" : {
         "id" : {
           "type" : "string",
