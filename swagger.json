@@ -343,8 +343,8 @@
   "definitions" : {
     "MaterialLot" : {
       "type" : "object",
-      "description" : "A representation of a uniquely identified specific amount of material, either countable or weighable shall be named as a material lot. A material lot describes the planned or actual total quantity or amount of material available, its current state, and its specific property values. A material lot may be tested by the execution of a material test specification.",
-      "required" : [ "id", "hierarchyScopeId", "effectiveFrom", "effectiveTo" ],
+      "description" : "A representation of a uniquely identified specific amount of material, either countable or weighable shall be named as a material lot. A material lot describes the planned or actual total quantity or amount of material available, its current state, and its specific property values. A material lot may be tested by the execution of a material test specification.\n\n**V0.1.0 Information**\nThe following properties are not supported in this version:\n- version\n- status\n- effectiveTo",
+      "required" : [ "id", "hierarchyScopeId", "effectiveFrom" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -394,11 +394,6 @@
           "description" : "The timestamp that this state of the Material Lot is effective from.",
           "example" : "201808151000"
         },
-        "effectiveTo" : {
-          "type" : "string",
-          "description" : "The timestamp that this state of the Material Lot expires.",
-          "example" : "201808151000"
-        },
         "spatialDefinition" : {
           "type" : "array",
           "description" : "The location or footprint of this item.",
@@ -416,7 +411,7 @@
     },
     "MaterialLotProperty" : {
       "type" : "object",
-      "description" : "Each material can have unique values for zero or more material lot properties, such as a specific pH value for the specific lot of material, or a specific density for the lot of material. A material lot property may be tested by the execution of a material test specification with results exchanged in a QA test specification result. Material lot properties may contain nested material lot properties.",
+      "description" : "Each material can have unique values for zero or more material lot properties, such as a specific pH value for the specific lot of material, or a specific density for the lot of material. A material lot property may be tested by the execution of a material test specification with results exchanged in a QA test specification result. Material lot properties may contain nested material lot properties.\n\n**V0.1.0 Information**\nThe following fields are included in this version, which are not part of the standard specification:\n- context\n- valueType",
       "required" : [ "id", "description", "value", "valueUnitOfMeasure" ],
       "properties" : {
         "id" : {
@@ -438,6 +433,16 @@
           "type" : "string",
           "description" : "The unit of measure of the associated property value, if applicable.",
           "example" : "Tonnes/Hour"
+        },
+        "context" : {
+          "type" : "string",
+          "description" : "The context associated with the property. This describes the kind of property",
+          "example" : "{Unstructured,Quality,Designation,NotApplicable}"
+        },
+        "valueType" : {
+          "type" : "string",
+          "description" : "The base type of the property value. This is used when rehydrating the object into native values",
+          "example" : "{String,Decimal,Boolean,DateTime,Integer}"
         },
         "properties" : {
           "type" : "array",
