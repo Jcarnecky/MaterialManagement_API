@@ -63,12 +63,6 @@
           "description" : "Material Lot ID",
           "required" : true,
           "type" : "string"
-        }, {
-          "in" : "query",
-          "name" : "id",
-          "description" : "The version of the spec to get the material lot for",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
