@@ -20,6 +20,36 @@
     "description" : "Operations available to regular developers"
   } ],
   "paths" : {
+    "/materialClass" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "retrieves material classes",
+        "operationId" : "searchMaterialClass",
+        "description" : "By passing in the appropriate options, you can search for material Classes in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hierarchyScopeId",
+          "description" : "The hierarchy scope to retrieve material classes by",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MaterialClass"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
     "/materialLot/{id}" : {
       "get" : {
         "tags" : [ "developers" ],
@@ -107,34 +137,28 @@
     "/materialLot" : {
       "get" : {
         "tags" : [ "developers" ],
-        "summary" : "retrieves material lots",
-        "operationId" : "searchMaterial",
-        "description" : "By passing in the appropriate options, you can search for available material lots in the system\n",
+        "summary" : "retrieves material lots by the material class that the lot belongs to",
+        "operationId" : "searchMaterialByClass",
+        "description" : "By passing in the material Class, you can search for available material lots in the system\n",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "query",
-          "name" : "id",
-          "description" : "the unique identifier of the material lot to retrieve",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "in" : "query",
-          "name" : "hierarchyScopeId",
-          "description" : "The hierarchy scope to retrieve material lots by",
+          "name" : "materialClassId",
+          "description" : "the unique identifier of the material class that the lot belongs to",
           "required" : true,
           "type" : "string"
         }, {
           "in" : "query",
-          "name" : "limit",
-          "description" : "the number of results to return",
+          "name" : "effectiveDate",
+          "description" : "the effective date from which to search",
           "required" : false,
-          "type" : "number"
+          "type" : "string"
         }, {
           "in" : "query",
-          "name" : "version",
-          "description" : "the version of the spec to get material lots for",
+          "name" : "ignoreClosedLots",
+          "description" : "the number of results to return",
           "required" : false,
-          "type" : "number"
+          "type" : "boolean"
         } ],
         "responses" : {
           "200" : {
@@ -171,87 +195,6 @@
           },
           "400" : {
             "description" : "Bad input parameter"
-          }
-        }
-      }
-    },
-    "/capability/{id}" : {
-      "get" : {
-        "tags" : [ "developers" ],
-        "summary" : "gets capability with a specific ID",
-        "operationId" : "getMaterialCapability",
-        "description" : "Gets material lot capability with a specific ID\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "description" : "Material Lot Capability ID",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "schema" : {
-              "$ref" : "#/definitions/MaterialCapability"
-            }
-          },
-          "404" : {
-            "description" : "Not found"
-          }
-        }
-      },
-      "delete" : {
-        "tags" : [ "admins" ],
-        "summary" : "deletes capability with a specific ID",
-        "operationId" : "deleteMaterialLotCapability",
-        "description" : "Delete material lot capability with a specific ID\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "description" : "Material Lot Capability ID",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Deleted"
-          },
-          "404" : {
-            "description" : "Not found"
-          }
-        }
-      },
-      "put" : {
-        "tags" : [ "admins" ],
-        "summary" : "updates capability with a specific ID",
-        "operationId" : "putMaterialLotCapability",
-        "description" : "Updates material lot capability with a specific ID\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "description" : "Material Lot Capability ID",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "in" : "body",
-          "name" : "materialCapability",
-          "description" : "The material capability to update.",
-          "schema" : {
-            "$ref" : "#/definitions/MaterialCapability"
-          }
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Updated"
-          },
-          "400" : {
-            "description" : "Bad input parameter"
-          },
-          "404" : {
-            "description" : "Not found"
           }
         }
       }
