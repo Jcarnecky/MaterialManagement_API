@@ -81,57 +81,6 @@
             "description" : "Not found"
           }
         }
-      },
-      "delete" : {
-        "tags" : [ "admins" ],
-        "summary" : "deletes material lots",
-        "operationId" : "deleteMaterialLot",
-        "description" : "Delete existing items of material from the system\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "description" : "Material Lot ID",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Deleted"
-          },
-          "404" : {
-            "description" : "Not found"
-          }
-        }
-      },
-      "put" : {
-        "tags" : [ "admins" ],
-        "summary" : "updates material lots",
-        "operationId" : "updateMaterialLot",
-        "description" : "Update existing items of material in the system\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "path",
-          "name" : "id",
-          "description" : "Material Lot ID",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "in" : "body",
-          "name" : "materialLot",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/MaterialLot"
-          }
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Updated"
-          },
-          "400" : {
-            "description" : "Bad input parameter"
-          }
-        }
       }
     },
     "/materialLot" : {
@@ -174,29 +123,6 @@
             "description" : "bad input parameter"
           }
         }
-      },
-      "post" : {
-        "tags" : [ "admins" ],
-        "summary" : "creates material lots",
-        "operationId" : "createMaterialLot",
-        "description" : "Create new items of material in the system\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "materialLot",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/MaterialLot"
-          }
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Created"
-          },
-          "400" : {
-            "description" : "Bad input parameter"
-          }
-        }
       }
     },
     "/capability" : {
@@ -208,28 +134,13 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "query",
-          "name" : "materialClassId",
-          "description" : "Material Class ID",
+          "name" : "materialLots",
+          "description" : "Material Lots",
           "required" : false,
-          "type" : "string"
-        }, {
-          "in" : "query",
-          "name" : "materialLotId",
-          "description" : "Material Lot ID",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "in" : "query",
-          "name" : "workType",
-          "description" : "Work Type",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "in" : "query",
-          "name" : "materialUse",
-          "description" : "Material Use",
-          "required" : false,
-          "type" : "string"
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         }, {
           "in" : "query",
           "name" : "minTimestamp",
