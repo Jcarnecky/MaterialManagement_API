@@ -134,7 +134,7 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "query",
-          "name" : "materialLots",
+          "name" : "materialLotIds",
           "description" : "Material Lots",
           "required" : false,
           "type" : "array",
