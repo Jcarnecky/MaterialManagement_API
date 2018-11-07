@@ -162,29 +162,6 @@
             "description" : "Bad input parameter"
           }
         }
-      },
-      "post" : {
-        "tags" : [ "admins" ],
-        "summary" : "creates material lot capabilities",
-        "operationId" : "createMaterialCapability",
-        "description" : "Create new items of material capability in the system\n",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "capability",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/MaterialCapability"
-          }
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Created"
-          },
-          "400" : {
-            "description" : "Bad input parameter"
-          }
-        }
       }
     }
   },
