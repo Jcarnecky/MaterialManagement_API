@@ -126,7 +126,7 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
-          "name" : "materialResourceInfo",
+          "name" : "materialLotInfo",
           "required" : true,
           "schema" : {
             "type" : "object",
