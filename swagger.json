@@ -382,8 +382,8 @@
     },
     "MaterialCapabilityProperty" : {
       "type" : "object",
-      "description" : "Material capability properties may contain nested material capability properties.",
-      "required" : [ "id", "value", "quantity" ],
+      "description" : "Material capability properties may contain nested material capability properties.\n\n**V0.1.0 Information**\nThe following properties are not supported in this version:\n- quantity\n- quantityUnitOfMeasure\n\nThe following additional properties are included in this version:\n- context\n- valueType",
+      "required" : [ "id", "value" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -405,15 +405,15 @@
           "description" : "The unit of measure of the associated property value, if applicable.",
           "example" : "{Metric,Imperial}"
         },
-        "quantity" : {
-          "type" : "number",
-          "description" : "Specifies the quantity of the material capability defined, if applicable.",
-          "example" : 1
-        },
-        "quantityUnitOfMeasure" : {
+        "context" : {
           "type" : "string",
-          "description" : "The unit of measure of the associated quantity.",
-          "example" : "Each"
+          "description" : "The context associated with the property. This describes the kind of property",
+          "example" : "{Unstructured,Quality,Designation,NotApplicable}"
+        },
+        "valueType" : {
+          "type" : "string",
+          "description" : "The base type of the property value. This is used when rehydrating the object into native values",
+          "example" : "{String,Decimal,Boolean,DateTime,Integer}"
         },
         "properties" : {
           "type" : "array",
