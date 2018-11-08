@@ -121,7 +121,7 @@
       "post" : {
         "tags" : [ "admins" ],
         "summary" : "Performs updates to sets of material lots",
-        "operationId" : "createMaterialLot",
+        "operationId" : "createMaterialLotInfo",
         "description" : "Create, Update Or Delete items of material in the system\n",
         "produces" : [ "application/json" ],
         "parameters" : [ {
