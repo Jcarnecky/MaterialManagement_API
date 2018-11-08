@@ -117,6 +117,49 @@
             "description" : "bad input parameter"
           }
         }
+      },
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "Performs updates to sets of material lots",
+        "operationId" : "createMaterialLot",
+        "description" : "Create, Update Or Delete items of material in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "materialLotInfo",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "added" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/definitions/MaterialLot"
+                }
+              },
+              "updated" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/definitions/MaterialLot"
+                }
+              },
+              "deleted" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/definitions/MaterialLot"
+                }
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad input parameter"
+          }
+        }
       }
     },
     "/capability" : {
