@@ -134,19 +134,115 @@
               "added" : {
                 "type" : "array",
                 "items" : {
-                  "$ref" : "#/definitions/MaterialLot"
+                  "type" : "object",
+                  "required" : [ "id", "storageLocationId", "effectiveFrom", "materialClassId", "materialDefinitionId" ],
+                  "properties" : {
+                    "id" : {
+                      "type" : "string",
+                      "description" : "A unique identification of a specific material lot, within the scope of the information exchanged (production capability, production schedule, production performance, …) The ID shall be used in other parts of the model when the material lot needs to be identified, such as the production capability for this material lot, or a production response identifying the material lot used.",
+                      "example" : "Block XYZ"
+                    },
+                    "materialClassId" : {
+                      "type" : "string",
+                      "example" : "In-Situ"
+                    },
+                    "materialDefinitionId" : {
+                      "type" : "string",
+                      "example" : "HG1"
+                    },
+                    "description" : {
+                      "type" : "string",
+                      "description" : "Additional information about the material lot.",
+                      "example" : "ER Crusher"
+                    },
+                    "storageLocationId" : {
+                      "type" : "string",
+                      "description" : "An identification of the storage location or a physical location of the material lot.",
+                      "example" : "ER-PC"
+                    },
+                    "quantity" : {
+                      "type" : "number",
+                      "description" : "The quantity of the material lot.",
+                      "example" : 5000
+                    },
+                    "quantityUnitOfMeasure" : {
+                      "type" : "string",
+                      "description" : "The unit of measure of the associated quantity, if applicable.",
+                      "example" : "Tonnes"
+                    },
+                    "effectiveFrom" : {
+                      "type" : "string",
+                      "description" : "The timestamp that this state of the Material Lot is effective from.",
+                      "example" : "201808151000"
+                    },
+                    "spatialDefinition" : {
+                      "type" : "array",
+                      "description" : "The location or footprint of this item.",
+                      "items" : {
+                        "$ref" : "#/definitions/SpatialDefinition"
+                      }
+                    },
+                    "properties" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/definitions/MaterialLotProperty"
+                      }
+                    }
+                  }
                 }
               },
               "updated" : {
                 "type" : "array",
                 "items" : {
-                  "$ref" : "#/definitions/MaterialLot"
+                  "type" : "object",
+                  "required" : [ "id", "effectiveFrom", "materialUse" ],
+                  "properties" : {
+                    "id" : {
+                      "type" : "string",
+                      "description" : "A unique identification of a specific material lot, within the scope of the information exchanged (production capability, production schedule, production performance, …) The ID shall be used in other parts of the model when the material lot needs to be identified, such as the production capability for this material lot, or a production response identifying the material lot used.",
+                      "example" : "Block XYZ"
+                    },
+                    "reason" : {
+                      "type" : "string",
+                      "description" : "Indicates the reason for the update on the material lot. WorkOutcome, PropertyMeasurement, Survey",
+                      "example" : "WorkOutcome"
+                    },
+                    "quantity" : {
+                      "type" : "number",
+                      "description" : "The quantity of the material lot.",
+                      "example" : 5000
+                    },
+                    "effectiveDateFrom" : {
+                      "type" : "string",
+                      "description" : "The timestamp that this state of the Material Lot is effective from.",
+                      "example" : "201808151000"
+                    },
+                    "spatialDefinition" : {
+                      "type" : "array",
+                      "description" : "The location or footprint of this item.",
+                      "items" : {
+                        "$ref" : "#/definitions/SpatialDefinition"
+                      }
+                    },
+                    "properties" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/definitions/MaterialLotProperty"
+                      }
+                    }
+                  }
                 }
               },
               "deleted" : {
                 "type" : "array",
                 "items" : {
-                  "$ref" : "#/definitions/MaterialLot"
+                  "type" : "object",
+                  "required" : [ "id" ],
+                  "properties" : {
+                    "id" : {
+                      "type" : "string"
+                    }
+                  }
                 }
               }
             }
@@ -245,16 +341,6 @@
           "type" : "string",
           "description" : "A unique identification of a specific material lot, within the scope of the information exchanged (production capability, production schedule, production performance, …) The ID shall be used in other parts of the model when the material lot needs to be identified, such as the production capability for this material lot, or a production response identifying the material lot used.",
           "example" : "Block XYZ"
-        },
-        "version" : {
-          "type" : "number",
-          "description" : "The version number of this instance of the Material Lot.",
-          "example" : 1
-        },
-        "status" : {
-          "type" : "string",
-          "description" : "Status of the material lot. For example, released, approved, blocked, in process, in quality check.",
-          "example" : "In Process"
         },
         "materialClassId" : {
           "type" : "string",
