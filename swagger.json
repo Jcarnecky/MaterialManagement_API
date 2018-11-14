@@ -195,7 +195,7 @@
                 "type" : "array",
                 "items" : {
                   "type" : "object",
-                  "required" : [ "id", "effectiveFrom", "materialUse" ],
+                  "required" : [ "id", "effectiveFrom", "reason" ],
                   "properties" : {
                     "id" : {
                       "type" : "string",
