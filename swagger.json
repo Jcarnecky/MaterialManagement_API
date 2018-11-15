@@ -237,10 +237,15 @@
                 "type" : "array",
                 "items" : {
                   "type" : "object",
-                  "required" : [ "id" ],
+                  "required" : [ "id", "effectiveFrom" ],
                   "properties" : {
                     "id" : {
                       "type" : "string"
+                    },
+                    "effectiveFrom" : {
+                      "type" : "string",
+                      "description" : "The timestamp that this state of the Material Lot is effective from.",
+                      "example" : "201808151000"
                     }
                   }
                 }
