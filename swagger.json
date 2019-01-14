@@ -448,7 +448,7 @@
     },
     "MaterialCapability" : {
       "type" : "object",
-      "description" : "A representation of the capability of material that is committed, available, or unattainable for a specific time shall be used as a material capability. Material capability is used for material lots or sublots. This includes information that is associated with the functions of material and energy control and product inventory control. The currently available and committed material capability is the inventory. WIP (work in progress) is a material capability currently under the control of production.\n\n**V0.1.0 Information**\nThe following properties are not supported in this version:\n- confidenceFactor\n- materialDefinitionId\n\nThe following are required in this version:\n- materialLotId",
+      "description" : "A representation of the capability of material that is committed, available, or unattainable for a specific time shall be used as a material capability. Material capability is used for material lots or sublots. This includes information that is associated with the functions of material and energy control and product inventory control. The currently available and committed material capability is the inventory. WIP (work in progress) is a material capability currently under the control of production.\n\n**V0.1.0 Information**\n\nThe following properties are not supported in this version:\n- confidenceFactor\n- materialDefinitionId\n\nThe following are required in this version:\n- materialLotId",
       "required" : [ "materialLotId", "capabilityType", "quantity", "quantityUnitOfMeasure" ],
       "properties" : {
         "materialClassId" : {
